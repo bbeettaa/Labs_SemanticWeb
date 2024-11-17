@@ -1,0 +1,41 @@
+PREFIX ex:  <http://example.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ex:Essay  ex:consistsOf  ex:Conclusion , ex:Body , ex:Introduction .
+
+ex:SPIEGEL  rdf:type       ex:InformationJournal;
+        ex:hasHeadquarter  ex:Hamburg;
+        ex:hasLanguage     ex:German .
+
+ex:Brass  rdf:type  [ rdf:type       ex:Alloy;
+                      ex:consistsOf  ex:Zinc , ex:Copper
+                    ] .
+
+ex:Olena  ex:says  [ rdf:type       rdf:Statement;
+                     rdf:object     ex:Kyiv;
+                     rdf:predicate  ex:lives;
+                     rdf:subject    ex:Friend
+                   ] .
+
+ex:Ivan  <http://xmlns.com/foaf/0.1/knows>
+                [ rdf:type       rdf:Statement;
+                  rdf:object     ex:Italy;
+                  rdf:predicate  ex:capitalOf;
+                  rdf:subject    ex:Rome
+                ] .
+
+ex:Pavlo  ex:knows  [ rdf:type       rdf:Statement;
+                      rdf:object     ex:Poltava;
+                      rdf:predicate  ex:lives;
+                      rdf:subject    ex:Olena
+                    ] .
+
+ex:Stefan  ex:thinks  [ rdf:type       rdf:Statement;
+                        rdf:object     [ rdf:type       rdf:Statement;
+                                         rdf:object     ex:Father;
+                                         rdf:predicate  <http://xmlns.com/foaf/0.1/knows>;
+                                         rdf:subject    ex:Stefan
+                                       ];
+                        rdf:predicate  <http://xmlns.com/foaf/0.1/knows>;
+                        rdf:subject    ex:Anna
+                      ] .

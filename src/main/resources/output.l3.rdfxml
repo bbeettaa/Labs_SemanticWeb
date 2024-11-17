@@ -1,0 +1,117 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="https://schema.org/"
+    xmlns:j.1="http://example.org/"
+    xmlns:j.2="http://www.w3.org/2006/vcard/ns#"
+    xmlns:j.3="http://xmlns.com/foaf/0.1/">
+  <j.1:Meeting rdf:about="http://example.org/CadeAndEmmaMeeting">
+    <j.0:attendee>
+      <j.3:Person rdf:about="http://example.org/Emma">
+        <j.1:hasVisited>
+          <rdf:Seq>
+            <rdf:li rdf:resource="http://example.org/Portugal"/>
+            <rdf:li rdf:resource="http://example.org/Italy"/>
+            <rdf:li rdf:resource="http://example.org/France"/>
+            <rdf:li rdf:resource="http://example.org/Germany"/>
+            <rdf:li rdf:resource="http://example.org/Denmark"/>
+            <rdf:li rdf:resource="http://example.org/Sweden"/>
+          </rdf:Seq>
+        </j.1:hasVisited>
+        <j.3:interest>
+          <rdf:Bag>
+            <rdf:li rdf:resource="http://example.org/Cycling"/>
+            <rdf:li rdf:resource="http://example.org/Music"/>
+            <rdf:li rdf:resource="http://example.org/Traveling"/>
+          </rdf:Bag>
+        </j.3:interest>
+        <j.0:hasCredential>
+          <j.0:EducationalOccupationalProgram>
+            <j.0:knowsAbout>
+              <rdf:Bag>
+                <rdf:li rdf:resource="http://example.org/WasteManagement"/>
+                <rdf:li rdf:resource="http://example.org/ToxicWaste"/>
+                <rdf:li rdf:resource="http://example.org/AirPollution"/>
+              </rdf:Bag>
+            </j.0:knowsAbout>
+            <j.0:alumniOf>
+              <j.0:CollegeOrUniversity>
+                <j.0:location>http://example.org/Valencia</j.0:location>
+                <j.0:name>Valencia University</j.0:name>
+              </j.0:CollegeOrUniversity>
+            </j.0:alumniOf>
+            <j.0:startDate>2015-06-01</j.0:startDate>
+            <j.0:educationalLevel>
+              <j.0:EducationalOccupationalCredential rdf:about="http://example.org/Master">
+                <j.0:name>Master</j.0:name>
+              </j.0:EducationalOccupationalCredential>
+            </j.0:educationalLevel>
+            <j.0:educationalCredentialAwarded>Chemistry</j.0:educationalCredentialAwarded>
+          </j.0:EducationalOccupationalProgram>
+        </j.0:hasCredential>
+        <j.2:hasAddress>
+          <j.2:Address>
+            <j.2:country-name>Spain</j.2:country-name>
+            <j.2:region>Valencia</j.2:region>
+            <j.2:postal-code>46020</j.2:postal-code>
+            <j.2:locality>Benimaclet</j.2:locality>
+            <j.2:street-address>Carrer de la Guardia Civil 20</j.2:street-address>
+          </j.2:Address>
+        </j.2:hasAddress>
+        <j.3:name rdf:parseType="Resource">
+          <j.3:firstName>Emma</j.3:firstName>
+        </j.3:name>
+      </j.3:Person>
+    </j.0:attendee>
+    <j.0:attendee>
+      <j.3:Person rdf:about="http://example.org/Cade">
+        <j.3:knows rdf:resource="http://example.org/Emma"/>
+        <j.1:hasVisited>
+          <rdf:Seq>
+            <rdf:li rdf:resource="http://example.org/Canada"/>
+            <rdf:li rdf:resource="http://example.org/France"/>
+          </rdf:Seq>
+        </j.1:hasVisited>
+        <j.3:interest>
+          <rdf:Bag>
+            <rdf:li rdf:resource="http://example.org/Birds"/>
+            <rdf:li rdf:resource="http://example.org/Ecology"/>
+            <rdf:li rdf:resource="http://example.org/Environment"/>
+            <rdf:li rdf:resource="http://example.org/Photography"/>
+            <rdf:li rdf:resource="http://example.org/Travel"/>
+          </rdf:Bag>
+        </j.3:interest>
+        <j.0:hasCredential>
+          <j.0:EducationalOccupationalProgram>
+            <j.0:alumniOf>
+              <j.0:CollegeOrUniversity>
+                <j.0:location>http://example.org/California</j.0:location>
+                <j.0:name>California University</j.0:name>
+              </j.0:CollegeOrUniversity>
+            </j.0:alumniOf>
+            <j.0:startDate>2011-06-01</j.0:startDate>
+            <j.0:educationalLevel>
+              <j.0:EducationalOccupationalCredential rdf:about="http://example.org/Bachelor">
+                <j.0:name>Bachelor</j.0:name>
+              </j.0:EducationalOccupationalCredential>
+            </j.0:educationalLevel>
+            <j.0:educationalCredentialAwarded>Biology</j.0:educationalCredentialAwarded>
+          </j.0:EducationalOccupationalProgram>
+        </j.0:hasCredential>
+        <j.2:hasAddress>
+          <j.2:Address>
+            <j.2:country-name>USA</j.2:country-name>
+            <j.2:region>California</j.2:region>
+            <j.2:postal-code>94709</j.2:postal-code>
+            <j.2:locality>Berkeley</j.2:locality>
+            <j.2:street-address>1516 Henry Street</j.2:street-address>
+          </j.2:Address>
+        </j.2:hasAddress>
+        <j.3:name rdf:parseType="Resource">
+          <j.3:firstName>Cade</j.3:firstName>
+        </j.3:name>
+      </j.3:Person>
+    </j.0:attendee>
+    <j.0:startDate>2014-08-01</j.0:startDate>
+    <j.0:location rdf:resource="http://example.org/Paris"/>
+  </j.1:Meeting>
+</rdf:RDF>

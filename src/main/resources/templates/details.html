@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деталі фільму</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .modal-body img {
+            max-height: 400px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Модальне вікно -->
+<div th:fragment="detailsFragment">
+    <div class="modal-header">
+        <h5 class="modal-title" th:text="${dataset.filmLabel}">Назва фільму</h5>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-4">
+                <img th:src="${dataset.posterUrl}" alt="Постер" class="img-fluid mb-3"/>
+            </div>
+            <div class="col-md-8">
+                <p><strong>Опис:</strong> <span th:text="${dataset.description}">Опис</span></p>
+                <p><strong>Жанри:</strong> <span th:text="${dataset.genres}">Жанри</span></p>
+                <p><strong>Країни:</strong> <span th:text="${dataset.countries}">Країни</span></p>
+                <p><strong>Оригінальні мови:</strong> <span
+                        th:text="${dataset.originalLanguage}">Оригінальні мови</span></p>
+                <p><strong>Тривалість:</strong> <span th:text="${dataset.duration}">Тривалість</span> хв.</p>
+                <p><strong>Дата публікації:</strong> <span
+                        th:text="${dataset.samplePublicationDate}">Дата публікації</span></p>
+
+                <!-- Проверка на наличие режиссёров, рейтинга и наград -->
+                <p th:if="${dataset.directors != null}"><strong>Режисери:</strong> <span th:text="${dataset.directors}">Режисери</span>
+                </p>
+                <p th:if="${dataset.rating != null}"><strong>Рейтинг:</strong> <span
+                        th:text="${dataset.rating}">Рейтинг</span></p>
+                <p th:if="${dataset.award != null}"><strong>Нагороди:</strong> <span
+                        th:text="${dataset.award}">Нагороди</span></p>
+
+                <!-- Дополнительная информация -->
+                <p th:if="${dataset.mainSubject != null}"><strong>Основна тема:</strong> <span
+                        th:text="${dataset.mainSubject}">Основна тема</span></p>
+                <p th:if="${dataset.slogan != null}"><strong>Слоган:</strong> <span
+                        th:text="${dataset.slogan}">Слоган</span></p>
+            </div>
+            <div class="col-md-4">
+                <a th:href="${dataset.uri}" th:text="${dataset.uri}" alt="uri" class="img-fluid mb-3"></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:ex="http://example.org/"
+    xmlns:j.0="http://xmlns.com/foaf/0.1/">
+  <ex:InformationJournal rdf:about="http://example.org/SPIEGEL">
+    <ex:hasHeadquarter rdf:resource="http://example.org/Hamburg"/>
+    <ex:hasLanguage rdf:resource="http://example.org/German"/>
+  </ex:InformationJournal>
+  <rdf:Description rdf:about="http://example.org/Brass">
+    <rdf:type>
+      <ex:Alloy>
+        <ex:consistsOf rdf:resource="http://example.org/Zinc"/>
+        <ex:consistsOf rdf:resource="http://example.org/Copper"/>
+      </ex:Alloy>
+    </rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Essay">
+    <ex:consistsOf rdf:resource="http://example.org/Conclusion"/>
+    <ex:consistsOf rdf:resource="http://example.org/Body"/>
+    <ex:consistsOf rdf:resource="http://example.org/Introduction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Pavlo">
+    <ex:knows>
+      <rdf:Statement>
+        <rdf:object rdf:resource="http://example.org/Poltava"/>
+        <rdf:predicate rdf:resource="http://example.org/lives"/>
+        <rdf:subject>
+          <rdf:Description rdf:about="http://example.org/Olena">
+            <ex:says>
+              <rdf:Statement>
+                <rdf:object rdf:resource="http://example.org/Kyiv"/>
+                <rdf:predicate rdf:resource="http://example.org/lives"/>
+                <rdf:subject rdf:resource="http://example.org/Friend"/>
+              </rdf:Statement>
+            </ex:says>
+          </rdf:Description>
+        </rdf:subject>
+      </rdf:Statement>
+    </ex:knows>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Ivan">
+    <j.0:knows>
+      <rdf:Statement>
+        <rdf:object rdf:resource="http://example.org/Italy"/>
+        <rdf:predicate rdf:resource="http://example.org/capitalOf"/>
+        <rdf:subject rdf:resource="http://example.org/Rome"/>
+      </rdf:Statement>
+    </j.0:knows>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Stefan">
+    <ex:thinks>
+      <rdf:Statement>
+        <rdf:object>
+          <rdf:Statement>
+            <rdf:object rdf:resource="http://example.org/Father"/>
+            <rdf:predicate rdf:resource="http://xmlns.com/foaf/0.1/knows"/>
+            <rdf:subject rdf:resource="http://example.org/Stefan"/>
+          </rdf:Statement>
+        </rdf:object>
+        <rdf:predicate rdf:resource="http://xmlns.com/foaf/0.1/knows"/>
+        <rdf:subject rdf:resource="http://example.org/Anna"/>
+      </rdf:Statement>
+    </ex:thinks>
+  </rdf:Description>
+</rdf:RDF>

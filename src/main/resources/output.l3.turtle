@@ -1,0 +1,130 @@
+<http://example.org/Emma>
+        a       <http://xmlns.com/foaf/0.1/Person>;
+        <http://example.org/hasVisited>
+                [ a       <http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq>;
+                  <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1>
+                          <http://example.org/Portugal>;
+                  <http://www.w3.org/1999/02/22-rdf-syntax-ns#_2>
+                          <http://example.org/Italy>;
+                  <http://www.w3.org/1999/02/22-rdf-syntax-ns#_3>
+                          <http://example.org/France>;
+                  <http://www.w3.org/1999/02/22-rdf-syntax-ns#_4>
+                          <http://example.org/Germany>;
+                  <http://www.w3.org/1999/02/22-rdf-syntax-ns#_5>
+                          <http://example.org/Denmark>;
+                  <http://www.w3.org/1999/02/22-rdf-syntax-ns#_6>
+                          <http://example.org/Sweden>
+                ];
+        <http://www.w3.org/2006/vcard/ns#hasAddress>
+                [ a       <http://www.w3.org/2006/vcard/ns#Address>;
+                  <http://www.w3.org/2006/vcard/ns#country-name>
+                          "Spain";
+                  <http://www.w3.org/2006/vcard/ns#locality>
+                          "Benimaclet";
+                  <http://www.w3.org/2006/vcard/ns#postal-code>
+                          "46020";
+                  <http://www.w3.org/2006/vcard/ns#region>
+                          "Valencia";
+                  <http://www.w3.org/2006/vcard/ns#street-address>
+                          "Carrer de la Guardia Civil 20"
+                ];
+        <http://xmlns.com/foaf/0.1/interest>
+                [ a       <http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag>;
+                  <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1>
+                          <http://example.org/Cycling>;
+                  <http://www.w3.org/1999/02/22-rdf-syntax-ns#_2>
+                          <http://example.org/Music>;
+                  <http://www.w3.org/1999/02/22-rdf-syntax-ns#_3>
+                          <http://example.org/Traveling>
+                ];
+        <http://xmlns.com/foaf/0.1/name>
+                [ <http://xmlns.com/foaf/0.1/firstName>
+                          "Emma" ];
+        <https://schema.org/hasCredential>
+                [ a                               <https://schema.org/EducationalOccupationalProgram>;
+                  <https://schema.org/alumniOf>   [ a                              <https://schema.org/CollegeOrUniversity>;
+                                                    <https://schema.org/location>  "http://example.org/Valencia";
+                                                    <https://schema.org/name>      "Valencia University"
+                                                  ];
+                  <https://schema.org/educationalCredentialAwarded>
+                          "Chemistry";
+                  <https://schema.org/educationalLevel>
+                          <http://example.org/Master>;
+                  <https://schema.org/knowsAbout>
+                          [ a       <http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag>;
+                            <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1>
+                                    <http://example.org/WasteManagement>;
+                            <http://www.w3.org/1999/02/22-rdf-syntax-ns#_2>
+                                    <http://example.org/ToxicWaste>;
+                            <http://www.w3.org/1999/02/22-rdf-syntax-ns#_3>
+                                    <http://example.org/AirPollution>
+                          ];
+                  <https://schema.org/startDate>  "2015-06-01"
+                ] .
+
+<http://example.org/Bachelor>
+        a                          <https://schema.org/EducationalOccupationalCredential>;
+        <https://schema.org/name>  "Bachelor" .
+
+<http://example.org/CadeAndEmmaMeeting>
+        a                               <http://example.org/Meeting>;
+        <https://schema.org/attendee>   <http://example.org/Emma> , <http://example.org/Cade>;
+        <https://schema.org/location>   <http://example.org/Paris>;
+        <https://schema.org/startDate>  "2014-08-01" .
+
+<http://example.org/Cade>
+        a       <http://xmlns.com/foaf/0.1/Person>;
+        <http://example.org/hasVisited>
+                [ a       <http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq>;
+                  <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1>
+                          <http://example.org/Canada>;
+                  <http://www.w3.org/1999/02/22-rdf-syntax-ns#_2>
+                          <http://example.org/France>
+                ];
+        <http://www.w3.org/2006/vcard/ns#hasAddress>
+                [ a       <http://www.w3.org/2006/vcard/ns#Address>;
+                  <http://www.w3.org/2006/vcard/ns#country-name>
+                          "USA";
+                  <http://www.w3.org/2006/vcard/ns#locality>
+                          "Berkeley";
+                  <http://www.w3.org/2006/vcard/ns#postal-code>
+                          "94709";
+                  <http://www.w3.org/2006/vcard/ns#region>
+                          "California";
+                  <http://www.w3.org/2006/vcard/ns#street-address>
+                          "1516 Henry Street"
+                ];
+        <http://xmlns.com/foaf/0.1/interest>
+                [ a       <http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag>;
+                  <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1>
+                          <http://example.org/Birds>;
+                  <http://www.w3.org/1999/02/22-rdf-syntax-ns#_2>
+                          <http://example.org/Ecology>;
+                  <http://www.w3.org/1999/02/22-rdf-syntax-ns#_3>
+                          <http://example.org/Environment>;
+                  <http://www.w3.org/1999/02/22-rdf-syntax-ns#_4>
+                          <http://example.org/Photography>;
+                  <http://www.w3.org/1999/02/22-rdf-syntax-ns#_5>
+                          <http://example.org/Travel>
+                ];
+        <http://xmlns.com/foaf/0.1/knows>
+                <http://example.org/Emma>;
+        <http://xmlns.com/foaf/0.1/name>
+                [ <http://xmlns.com/foaf/0.1/firstName>
+                          "Cade" ];
+        <https://schema.org/hasCredential>
+                [ a                               <https://schema.org/EducationalOccupationalProgram>;
+                  <https://schema.org/alumniOf>   [ a                              <https://schema.org/CollegeOrUniversity>;
+                                                    <https://schema.org/location>  "http://example.org/California";
+                                                    <https://schema.org/name>      "California University"
+                                                  ];
+                  <https://schema.org/educationalCredentialAwarded>
+                          "Biology";
+                  <https://schema.org/educationalLevel>
+                          <http://example.org/Bachelor>;
+                  <https://schema.org/startDate>  "2011-06-01"
+                ] .
+
+<http://example.org/Master>
+        a                          <https://schema.org/EducationalOccupationalCredential>;
+        <https://schema.org/name>  "Master" .

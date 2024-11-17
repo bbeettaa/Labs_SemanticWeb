@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кінематограф України</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .film {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+        h2 {
+            margin: 0;
+        }
+        .film-info {
+            margin: 10px 0;
+        }
+        .rating {
+            font-weight: bold;
+        }
+    </style>
+    <script type="application/ld+json">
+        [
+            {
+                "@type": "Movie",
+                "name": "Земля",
+                "director": {
+                    "@type": "Person",
+                    "name": "Олександр Довженко"
+                },
+                "actor": [
+                    {
+                        "@type": "Person",
+                        "name": "С. С. Здоровець"
+                    },
+                    {
+                        "@type": "Person",
+                        "name": "Л. О. Дубровіна"
+                    }
+                ],
+                "image": "https://example.com/image.jpg",
+                "genre": "Драма",
+                "datePublished": "1930-01-01",
+                "duration": "PT75M",
+                "description": "Фільм розповідає про селянське життя в Україні на початку 20 століття.",
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "8.5"
+                }
+            },
+            {
+                "@type": "Movie",
+                "name": "Тіні забутих предків",
+                "director": {
+                    "@type": "Person",
+                    "name": "Сергій Параджанов"
+                },
+                "actor": [
+                    {
+                        "@type": "Person",
+                        "name": "Іван Миколайчук"
+                    },
+                    {
+                        "@type": "Person",
+                        "name": "Лариса Кадочникова"
+                    }
+                ],
+                "image": "https://example.com/image.jpg",
+                "genre": [
+                    "Драма",
+                    "Музичний"
+                ],
+                "datePublished": "1965-01-01",
+                "duration": "PT97M",
+                "description": "Кінофільм, що базується на гуцульських легендах, розповідає про кохання між молодими людьми з різних родин.",
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "9.5"
+                }
+            },
+            {
+                "@type": "Movie",
+                "name": "Вавилон XIII",
+                "director": {
+                    "@type": "Person",
+                    "name": "Ігор Стрембіцький"
+                },
+                "actor": [
+                    {
+                        "@type": "Person",
+                        "name": "Юрій Ковальов"
+                    },
+                    {
+                        "@type": "Person",
+                        "name": "Михайло Жонін"
+                    }
+                ],
+                "image": "https://example.com/image.jpg",
+                "genre": "Документальний",
+                "datePublished": "2014-01-01",
+                "duration": "PT90M",
+                "description": "Серія документальних фільмів, що розповідають про життя людей в Україні в часи змін.",
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "8.8"
+                }
+            },
+            {
+                "@type": "Movie",
+                "name": "Плем'я",
+                "director": {
+                    "@type": "Person",
+                    "name": "Мирослав Слабошпицький"
+                },
+                "actor": [
+                    {
+                        "@type": "Person",
+                        "name": "Григорій Фесенко"
+                    },
+                    {
+                        "@type": "Person",
+                        "name": "Ярослав Дронь"
+                    }
+                ],
+                "image": "https://example.com/image.jpg",
+                "genre": "Драма",
+                "datePublished": "2014-01-01",
+                "duration": "PT132M",
+                "description": "Фільм, що розповідає про життя глухих підлітків в інтернаті, без жодного слова.",
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "9.2"
+                }
+            },
+            {
+                "@type": "Movie",
+                "name": "Гетьман",
+                "director": {
+                    "@type": "Person",
+                    "name": "Станіслав Капралов"
+                },
+                "actor": [
+                    {
+                        "@type": "Person",
+                        "name": "Олександр Рудаков"
+                    },
+                    {
+                        "@type": "Person",
+                        "name": "Віталій Салій"
+                    }
+                ],
+                "image": "https://example.com/image.jpg",
+                "genre": "Історичний",
+                "datePublished": "2017-01-01",
+                "duration": "PT105M",
+                "description": "Фільм про життя і боротьбу гетьмана Івана Мазепи.",
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "8.0"
+                }
+            },
+            {
+                "@type": "Movie",
+                "name": "Кіборги. Герої не вмирають",
+                "director": {
+                    "@type": "Person",
+                    "name": "Ахтем Сеїтаблаєв"
+                },
+                "actor": [
+                    {
+                        "@type": "Person",
+                        "name": "Андрій Ісаєнко"
+                    },
+                    {
+                        "@type": "Person",
+                        "name": "Дмитро Сова"
+                    }
+                ],
+                "image": "https://example.com/image.jpg",
+                "genre": "Воєнна драма",
+                "datePublished": "2017-01-01",
+                "duration": "PT109M",
+                "description": "Фільм про оборону Донецького аеропорту українськими військовими.",
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "8.4"
+                }
+            },
+            {
+                "@type": "Movie",
+                "name": "Сторожова застава",
+                "director": {
+                    "@type": "Person",
+                    "name": "Юрій Ковальов"
+                },
+                "actor": [
+                    {
+                        "@type": "Person",
+                        "name": "Дмитро Ступка"
+                    },
+                    {
+                        "@type": "Person",
+                        "name": "Станіслав Боклан"
+                    }
+                ],
+                "image": "https://example.com/image.jpg",
+                "genre": [
+                    "Фентезі",
+                    "Пригоди"
+                ],
+                "datePublished": "2017-01-01",
+                "duration": "PT115M",
+                "description": "Пригодницький фільм про хлопця, який потрапляє в середньовіччя.",
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "8.6"
+                }
+            },
+            {
+                "@type": "Movie",
+                "name": "Додому",
+                "director": {
+                    "@type": "Person",
+                    "name": "Наріман Алієв"
+                },
+                "actor": [
+                    {
+                        "@type": "Person",
+                        "name": "Ахтем Сеїтаблаєв"
+                    },
+                    {
+                        "@type": "Person",
+                        "name": "Аліна Шевченко"
+                    }
+                ],
+                "image": "https://example.com/image.jpg",
+                "genre": "Драма",
+                "datePublished": "2019-01-01",
+                "duration": "PT101M",
+                "description": "Фільм про батька, який їде на батьківщину, щоб поховати сина.",
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "8.7"
+                }
+            },
+            {
+                "@type": "Movie",
+                "name": "Мої думки тихі",
+                "director": {
+                    "@type": "Person",
+                    "name": "Антоніо Лосєв"
+                },
+                "actor": [
+                    {
+                        "@type": "Person",
+                        "name": "Володимир Ямненко"
+                    },
+                    {
+                        "@type": "Person",
+                        "name": "Оксана Костенко"
+                    }
+                ],
+                "image": "https://example.com/image.jpg",
+                "genre": "Комедія",
+                "datePublished": "2019-01-01",
+                "duration": "PT85M",
+                "description": "Молодий звукорежисер намагається знайти себе та своє місце у світі.",
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "8.5"
+                }
+            },
+            {
+                "@type": "Movie",
+                "name": "Брама",
+                "director": {
+                    "@type": "Person",
+                    "name": "Володимир Тихий"
+                },
+                "actor": [
+                    {
+                        "@type": "Person",
+                        "name": "Олег Щербина"
+                    },
+                    {
+                        "@type": "Person",
+                        "name": "Лілія Михайлівська"
+                    }
+                ],
+                "image": "https://example.com/image.jpg",
+                "genre": [
+                    "Драма",
+                    "Трилер"
+                ],
+                "datePublished": "2017-01-01",
+                "duration": "PT102M",
+                "description": "Фільм про загадкові події, що трапляються в селі на сході України.",
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "8.9"
+                }
+            }
+        ]
+
+
+    </script>
+</head>
+<body>
+<h1>Кінематограф України</h1>
+
+<div class="film" vocab="http://schema.org/" typeof="Movie">
+    <h2 property="name">1. "Земля"</h2>
+    <div class="film-info">Режисер: <span property="director" typeof="Person"><span
+            property="name">Олександр Довженко</span></span></div>
+    <div class="film-info">Актори:
+        <span property="actor" typeof="Person"><span property="name">С. С. Здоровець</span></span>,
+        <span property="actor" typeof="Person"><span property="name">Л. О. Дубровіна</span></span></div>
+    <div class="film-info">Жанр: <span property="genre">Драма</span></div>
+    <div class="film-info">Дата виходу:
+        <time property="datePublished" datetime="1930-01-01">1930</time>
+    </div>
+    <div class="film-info">Тривалість:
+        <time property="duration" datetime="PT75M">75 хв</time>
+    </div>
+    <div class="film-info">Опис: <span property="description">Фільм розповідає про селянське життя в Україні на початку 20 століття.</span>
+    </div>
+    <div class="film-info rating">Оцінка: <span property="aggregateRating" typeof="AggregateRating"><span
+            property="ratingValue">4.5</span>/5 (<span property="ratingCount">120</span> відгуків)</span></div>
+
+    <div property="image" content="https://example.com/images/zemlya.jpg"></div>
+</div>
+
+
+<div class="film" vocab="http://schema.org/" typeof="Movie">
+    <h2 property="name">2. "Тіні забутих предків"</h2>
+    <div class="film-info">Режисер: <span property="director" typeof="Person"><span
+            property="name">Сергій Параджанов</span></span></div>
+    <div class="film-info">Актори:
+        <span property="actor" typeof="Person"><span property="name">Іван Миколайчук</span></span>,
+        <span property="actor" typeof="Person"><span property="name">Лариса Кадочникова</span></span></div>
+    <div class="film-info">Жанр: <span property="genre">Драма</span>, <span property="genre">Музичний</span></div>
+    <div class="film-info">Дата виходу:
+        <time property="datePublished" datetime="1965-01-01">1965</time>
+    </div>
+    <div class="film-info">Тривалість:
+        <time property="duration" datetime="PT97M">97 хв</time>
+    </div>
+    <div class="film-info">Опис: <span property="description">Кінофільм, що базується на гуцульських легендах, розповідає про кохання між молодими людьми з різних родин.</span>
+    </div>
+    <div class="film-info rating">Оцінка: <span property="aggregateRating" typeof="AggregateRating"><span
+            property="ratingValue">4.5</span>/5 (<span property="ratingCount">120</span> відгуків)</span></div>
+    <div property="image" content="https://example.com/images/tini.jpg"></div>
+</div>
+
+<div class="film" vocab="http://schema.org/" typeof="Movie">
+    <h2 property="name">3. "Вавилон XIII"</h2>
+    <div class="film-info">Режисер: <span property="director" typeof="Person"><span
+            property="name">Ігор Стрембіцький</span></span></div>
+    <div class="film-info">Актори:
+        <span property="actor" typeof="Person"><span property="name">Юрій Ковальов</span></span>,
+        <span property="actor" typeof="Person"><span property="name">Михайло Жонін</span></span></div>
+    <div class="film-info">Жанр: <span property="genre">Документальний</span></div>
+    <div class="film-info">Дата виходу:
+        <time property="datePublished" datetime="2014-01-01">2014</time>
+    </div>
+    <div class="film-info">Тривалість:
+        <time property="duration" datetime="PT90M">90 хв</time>
+    </div>
+    <div class="film-info">Опис: <span property="description">Серія документальних фільмів, що розповідають про життя людей в Україні в часи змін.</span>
+    </div>
+    <div class="film-info rating">Оцінка: <span property="aggregateRating" typeof="AggregateRating"><span
+            property="ratingValue">4.8</span>/5 (<span property="ratingCount">120</span> відгуків)</span></div>
+    <div property="image" content="https://example.com/images/vavilon.jpg"></div>
+</div>
+
+<div class="film" vocab="http://schema.org/" typeof="Movie">
+    <h2 property="name">4. "Плем'я"</h2>
+    <div class="film-info">Режисер: <span property="director" typeof="Person"><span property="name">Мирослав Слабошпицький</span></span>
+    </div>
+    <div class="film-info">Актори:
+        <span property="actor" typeof="Person"><span property="name">Григорій Фесенко</span></span>,
+        <span property="actor" typeof="Person"><span property="name">Ярослав Дронь</span></span></div>
+    <div class="film-info">Жанр: <span property="genre">Драма</span></div>
+    <div class="film-info">Дата виходу:
+        <time property="datePublished" datetime="2014-01-01">2014</time>
+    </div>
+    <div class="film-info">Тривалість:
+        <time property="duration" datetime="PT132M">132 хв</time>
+    </div>
+    <div class="film-info">Опис: <span property="description">Фільм, що розповідає про життя глухих підлітків в інтернаті, без жодного слова.</span>
+    </div>
+    <div class="film-info rating">Оцінка: <span property="aggregateRating" typeof="AggregateRating"><span
+            property="ratingValue">4.2</span>/5 (<span property="ratingCount">120</span> відгуків)</span></div>
+    <div property="image" content="https://example.com/images/plemya.jpg"></div>
+</div>
+
+<div class="film" vocab="http://schema.org/" typeof="Movie">
+    <h2 property="name">5. "Гетьман"</h2>
+    <div class="film-info">Режисер: <span property="director" typeof="Person"><span
+            property="name">Станіслав Капралов</span></span></div>
+    <div class="film-info">Актори:
+        <span property="actor" typeof="Person"><span property="name">Олександр Рудаков</span></span>,
+        <span property="actor" typeof="Person"><span property="name">Віталій Салій</span></span></div>
+    <div class="film-info">Жанр: <span property="genre">Історичний</span></div>
+    <div class="film-info">Дата виходу:
+        <time property="datePublished" datetime="2017-01-01">2017</time>
+    </div>
+    <div class="film-info">Тривалість:
+        <time property="duration" datetime="PT105M">105 хв</time>
+    </div>
+    <div class="film-info">Опис: <span property="description">Фільм про життя і боротьбу гетьмана Івана Мазепи.</span>
+    </div>
+    <div class="film-info rating">Оцінка: <span property="aggregateRating" typeof="AggregateRating"><span
+            property="ratingValue">4.0</span>/5 (<span property="ratingCount">120</span> відгуків)</span></div>
+    <div property="image" content="https://example.com/images/getman.jpg"></div>
+</div>
+
+<div class="film" itemscope itemtype="http://schema.org/Movie">
+    <img src="https://example.com/images/kiborgu.jpg" itemprop="image"/>
+    <h2 itemprop="name">6. "Кіборги. Герої не вмирають"</h2>
+    <div class="film-info">Режисер: <span itemprop="director" itemscope itemtype="http://schema.org/Person"><span
+            itemprop="name">Ахтем Сеїтаблаєв</span></span></div>
+    <div class="film-info">Актори:
+        <span itemprop="actor" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Андрій Ісаєнко</span></span>,
+        <span itemprop="actor" itemscope itemtype="http://schema.org/Person"><span
+                itemprop="name">Дмитро Сова</span></span></div>
+    <div class="film-info">Жанр: <span itemprop="genre">Воєнна драма</span></div>
+    <div class="film-info">Дата виходу:
+        <time itemprop="datePublished" datetime="2017-01-01">2017</time>
+    </div>
+    <div class="film-info">Тривалість:
+        <time itemprop="duration" datetime="PT109M">109 хв</time>
+    </div>
+    <div class="film-info">Опис: <span itemprop="description">Фільм про оборону Донецького аеропорту українськими військовими.</span>
+    </div>
+    <div class="film-info rating">Оцінка: <span itemprop="aggregateRating" itemscope
+                                                itemtype="http://schema.org/AggregateRating"><span
+            itemprop="ratingValue">4.4</span>/5 (<span itemprop="ratingCount">120</span> відгуків)</span></div>
+</div>
+
+<div class="film" itemscope itemtype="http://schema.org/Movie">
+    <img src="https://example.com/images/zastava.jpg" itemprop="image"/>
+    <h2 itemprop="name">7. "Сторожова застава"</h2>
+    <div class="film-info">Режисер: <span itemprop="director" itemscope itemtype="http://schema.org/Person"><span
+            itemprop="name">Юрій Ковальов</span></span></div>
+    <div class="film-info">Актори:
+        <span itemprop="actor" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Дмитро Ступка</span></span>,
+        <span itemprop="actor" itemscope itemtype="http://schema.org/Person"><span
+                itemprop="name">Станіслав Боклан</span></span></div>
+    <div class="film-info">Жанр: <span itemprop="genre">Фентезі</span>, <span itemprop="genre">Пригоди</span></div>
+    <div class="film-info">Дата виходу:
+        <time itemprop="datePublished" datetime="2017-01-01">2017</time>
+    </div>
+    <div class="film-info">Тривалість:
+        <time itemprop="duration" datetime="PT115M">115 хв</time>
+    </div>
+    <div class="film-info">Опис: <span itemprop="description">Пригодницький фільм про хлопця, який потрапляє в середньовіччя.</span>
+    </div>
+    <div class="film-info rating">Оцінка: <span itemprop="aggregateRating" itemscope
+                                                itemtype="http://schema.org/AggregateRating"><span
+            itemprop="ratingValue">4.6</span>/5 (<span itemprop="ratingCount">120</span> відгуків)</span></div>
+</div>
+
+<div class="film" itemscope itemtype="http://schema.org/Movie">
+    <img src="https://example.com/images/dodomy.jpg" itemprop="image"/>
+    <h2 itemprop="name">8. "Додому"</h2>
+    <div class="film-info">Режисер: <span itemprop="director" itemscope itemtype="http://schema.org/Person"><span
+            itemprop="name">Наріман Алієв</span></span></div>
+    <div class="film-info">Актори:
+        <span itemprop="actor" itemscope itemtype="http://schema.org/Person"><span
+                itemprop="name">Ахтем Сеїтаблаєв</span></span>,
+        <span itemprop="actor" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Аліна Шевченко</span></span>
+    </div>
+    <div class="film-info">Жанр: <span itemprop="genre">Драма</span></div>
+    <div class="film-info">Дата виходу:
+        <time itemprop="datePublished" datetime="2019-01-01">2019</time>
+    </div>
+    <div class="film-info">Тривалість:
+        <time itemprop="duration" datetime="PT101M">101 хв</time>
+    </div>
+    <div class="film-info">Опис: <span itemprop="description">Фільм про батька, який їде на батьківщину, щоб поховати сина.</span>
+    </div>
+    <div class="film-info rating">Оцінка: <span itemprop="aggregateRating" itemscope
+                                                itemtype="http://schema.org/AggregateRating"><span
+            itemprop="ratingValue">4.7</span>/5 (<span itemprop="ratingCount">120</span> відгуків)</span></div>
+</div>
+
+<div class="film" itemscope itemtype="http://schema.org/Movie">
+    <img src="https://example.com/images/dumku.jpg" itemprop="image"/>
+    <h2 itemprop="name">9. "Мої думки тихі"</h2>
+    <div class="film-info">Режисер: <span itemprop="director" itemscope itemtype="http://schema.org/Person"><span
+            itemprop="name">Антоніо Лосєв</span></span></div>
+    <div class="film-info">Актори:
+        <span itemprop="actor" itemscope itemtype="http://schema.org/Person"><span
+                itemprop="name">Володимир Ямненко</span></span>,
+        <span itemprop="actor" itemscope itemtype="http://schema.org/Person"><span
+                itemprop="name">Оксана Костенко</span></span></div>
+    <div class="film-info">Жанр: <span itemprop="genre">Комедія</span></div>
+    <div class="film-info">Дата виходу:
+        <time itemprop="datePublished" datetime="2019-01-01">2019</time>
+    </div>
+    <div class="film-info">Тривалість:
+        <time itemprop="duration" datetime="PT85M">85 хв</time>
+    </div>
+    <div class="film-info">Опис: <span itemprop="description">Молодий звукорежисер намагається знайти себе та своє місце у світі.</span>
+    </div>
+    <div class="film-info rating">Оцінка: <span itemprop="aggregateRating" itemscope
+                                                itemtype="http://schema.org/AggregateRating"><span
+            itemprop="ratingValue">4.5</span>/5 (<span itemprop="ratingCount">120</span> відгуків)</span></div>
+</div>
+
+<div class="film" itemscope itemtype="http://schema.org/Movie">
+    <img src="https://example.com/images/brama.jpg" itemprop="image"/>
+    <h2 itemprop="name">10. "Брама"</h2>
+    <div class="film-info">Режисер: <span itemprop="director" itemscope itemtype="http://schema.org/Person"><span
+            itemprop="name">Володимир Тихий</span></span></div>
+    <div class="film-info">Актори:
+        <span itemprop="actor" itemscope itemtype="http://schema.org/Person"><span
+                itemprop="name">Олег Щербина</span></span>,
+        <span itemprop="actor" itemscope itemtype="http://schema.org/Person"><span
+                itemprop="name">Лілія Михайлівська</span></span></div>
+    <div class="film-info">Жанр: <span itemprop="genre">Драма</span>, <span itemprop="genre">Трилер</span></div>
+    <div class="film-info">Дата виходу:
+        <time itemprop="datePublished" datetime="2017-01-01">2017</time>
+    </div>
+    <div class="film-info">Тривалість:
+        <time itemprop="duration" datetime="PT102M">102 хв</time>
+    </div>
+    <div class="film-info rating">Оцінка: <span itemprop="aggregateRating" itemscope
+                                                itemtype="http://schema.org/AggregateRating"><span
+            itemprop="ratingValue">4.5</span>/5 (<span itemprop="ratingCount">120</span> відгуків)</span></div>
+</div>
+
+</body>
+</html>
