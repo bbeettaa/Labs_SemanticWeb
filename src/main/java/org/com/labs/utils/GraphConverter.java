@@ -1,4 +1,4 @@
-package org.com.utils;
+package org.com.labs.utils;
 
 import org.apache.commons.rdf.api.Graph;
 import org.apache.commons.rdf.api.RDFTerm;

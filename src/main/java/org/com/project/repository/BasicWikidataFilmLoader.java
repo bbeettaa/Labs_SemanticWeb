@@ -1,22 +1,29 @@
-package org.com.project.seriveces;
+package org.com.project.repository;
 
 import org.apache.jena.query.*;
 import org.apache.jena.sparql.exec.http.QueryExecutionHTTP;
 
 import java.util.TreeMap;
 
-public class WikidataLoader {
+public class BasicWikidataFilmLoader implements WikidataFilmLoader {
     private static final String WIKIDATA_ENDPOINT = "https://query.wikidata.org/sparql";
+    private static final String SPARQL_PREFIXES = """
+            PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+            PREFIX wd: <http://www.wikidata.org/entity/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            PREFIX schema: <http://schema.org/>
+            PREFIX wikibase: <http://wikiba.se/ontology#>
+            PREFIX bd: <http://www.bigdata.com/rdf#>
+            """;
 
+    /**
+     * Завантажує доступні жанри фільмів із Wikidata.
+     *
+     * @return {@link TreeMap}, де ключ — локальне ім'я жанру, значення — його назва українською мовою.
+     */
     public TreeMap<String, String> getAvailableGenres() {
         TreeMap<String, String> availableGenres = new TreeMap<>();
-        String sparql = """
-                PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-                PREFIX wd: <http://www.wikidata.org/entity/>
-                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-                PREFIX wikibase: <http://wikiba.se/ontology#>
-                PREFIX bd: <http://www.bigdata.com/rdf#>
-                
+        String sparql = SPARQL_PREFIXES + """
                 SELECT DISTINCT ?genre ?genreLabel WHERE {
                     ?film wdt:P31 wd:Q11424;              # Instance of film
                           wdt:P136 ?genre;                # Genre of the film
@@ -42,23 +49,30 @@ public class WikidataLoader {
         return availableGenres;
     }
 
+    /**
+     * Генерує SPARQL-запит для отримання фільмів із Wikidata із заданими фільтрами, сортуванням та пагінацією.
+     *
+     * @param genre      Жанр фільмів (якщо "all", жанр не враховується).
+     * @param limit      Кількість фільмів для завантаження.
+     * @param offset     Зсув для пагінації.
+     * @param sortColumn Колонка для сортування (наприклад, "samplePublicationDate").
+     * @param sortOrder  Порядок сортування ("ASC" або "DESC").
+     * @param searchName Частковий пошук за назвою фільму.
+     * @return SPARQL-запит у вигляді строки.
+     */
     public String sparqlQueryAllFilms(String genre, int limit, int offset, String sortColumn, String sortOrder, String searchName) {
         int year = 0;
         String countryFilter = "wd:Q212";
         String languageFilter = "uk";
         String genreFilter = genre.equals("all") ? "" : String.format("wdt:P136 wd:%s; ", genre);
 
-        String q = String.format("""
-                 PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-                 PREFIX wd: <http://www.wikidata.org/entity/>
-                 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-                 PREFIX schema: <http://schema.org/>
+        String q = String.format(SPARQL_PREFIXES + """ 
                 
-                 SELECT ?film ?filmLabel ?description 
+                 SELECT ?film ?filmLabel ?description  ?posterUrl
                  (GROUP_CONCAT(DISTINCT ?genreLabel; separator=", ") AS ?genres)
                  (SAMPLE(YEAR(?publicationDate)) AS ?samplePublicationDate)
                  (SAMPLE(?ratingLabel) AS ?rating)
-                 (SAMPLE(?poster) AS ?posterUrl)  # Исправление тут
+                
                 
                  WHERE {
                    ?film wdt:P31 wd:Q11424;                  # Instance of film
@@ -71,7 +85,7 @@ public class WikidataLoader {
                    FILTER(CONTAINS(LCASE(STR(?filmLabel)), LCASE("%s")))
                 
                    OPTIONAL {
-                    ?film wdt:P136 ?genre.          # Genre
+                     ?film wdt:P136 ?genre.          # Genre
                      ?genre rdfs:label ?genreLabel.
                      FILTER(LANG(?genreLabel) = "%s") # Genre in Ukrainian
                     }
@@ -81,15 +95,13 @@ public class WikidataLoader {
                      FILTER(LANG(?description) = "%s") # Filter for descriptions in Ukrainian
                    }
                 
-                   OPTIONAL {
-                     ?film wdt:P444 ?ratingLabel.  # рейтинг
-                     ?film wdt:P18 ?poster.                   # Изображение постера
-                   }
+                   OPTIONAL { ?film wdt:P444 ?ratingLabel. }
+                   OPTIONAL { ?film wdt:P18 ?posterUrl. }
                 
                    FILTER(YEAR(?publicationDate) > %d)
                 
                  }
-                GROUP BY ?film ?filmLabel ?description
+                GROUP BY ?film ?filmLabel ?description ?posterUrl
                 ORDER BY %s(%s)                                 # Сортировка
                 LIMIT %d
                 OFFSET %d                                        # Добавлен OFFSET
@@ -97,18 +109,19 @@ public class WikidataLoader {
         return q;
     }
 
+    /**
+     * Генерує SPARQL-запит для підрахунку загальної кількості фільмів, які відповідають заданим критеріям.
+     *
+     * @param genre      Жанр фільму (локальне ім'я). Якщо значення "all", жанр не враховується.
+     * @param searchName Частина назви фільму для пошуку.
+     * @return SPARQL-запит у вигляді рядка.
+     */
     public String sparqlQueryCountFilms(String genre, String searchName) {
         String countryFilter = "wd:Q212";
         String genreFilter = genre.equals("all") ? "" : String.format("wdt:P136 wd:%s; ", genre);
         String languageFilter = "uk";
 
-        return String.format("""
-                PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-                PREFIX wd: <http://www.wikidata.org/entity/>
-                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-                PREFIX wikibase: <http://wikiba.se/ontology#>
-                PREFIX schema: <http://schema.org/>
-                
+        return String.format(SPARQL_PREFIXES + """ 
                 SELECT (COUNT(?film) AS ?count)
                 WHERE {
                     ?film wdt:P31 wd:Q11424;                  # Instance of film
@@ -129,17 +142,16 @@ public class WikidataLoader {
                 """, countryFilter, genreFilter, languageFilter, searchName, languageFilter);
     }
 
+    /**
+     * Генерує SPARQL-запит для отримання детальної інформації про конкретний фільм.
+     *
+     * @param filmId Ідентифікатор фільму (локальне ім'я в Wikidata).
+     * @return SPARQL-запит у вигляді рядка.
+     */
     public String sparqlQueryFilmDetails(String filmId) {
         String languageFilter = "uk,ru,en";
 
-        return String.format("""
-                PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-                PREFIX wd: <http://www.wikidata.org/entity/>
-                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-                PREFIX wikibase: <http://wikiba.se/ontology#>
-                PREFIX bd: <http://www.bigdata.com/rdf#>
-                PREFIX schema: <http://schema.org/>
-                
+        return String.format(SPARQL_PREFIXES + """ 
                   SELECT ?film ?rating ?description ?duration ?posterUrl ?slogan  ?originalLanguage   ?filmLabel 
                 
                    (SAMPLE(YEAR(?publicationDate)) AS ?publicationYear)

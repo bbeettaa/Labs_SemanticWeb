@@ -1,4 +1,4 @@
-package org.com.l1;
+package org.com.labs;
 
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;

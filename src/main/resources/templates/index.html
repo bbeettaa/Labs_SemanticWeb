@@ -191,9 +191,9 @@
         <p>Загальна кількість сторінок: <span th:text="${maxPages}">1</span></p>
     </div>
     <div>
-        <a th:href="@{/?page={previousPage}&size={size}&genre={genre}&searchName={searchName}&sortColumn={sortColumn}&sort={sort}(previousPage=${previousPage}, size=${size}, genre=${genre}, searchName=${searchName}, sortColumn=${sortColumn}, sort=${sort})}"
+        <a th:href="@{/?page={previousPage}&size={size}&genre={genre}&searchName={searchName}&sortColumn={sortColumn}&sortOrder={sortOrder}(previousPage=${previousPage}, size=${size}, genre=${genre}, searchName=${searchName}, sortColumn=${sortColumn}, sortOrder=${sortOrder})}"
            class="btn btn-primary btn-sm" th:if="${page > 1}">Попередня сторінка</a>
-        <a th:href="@{/?page={nextPage}&size={size}&genre={genre}&searchName={searchName}&sortColumn={sortColumn}&sort={sort}(nextPage=${nextPage}, size=${size}, genre=${genre}, searchName=${searchName}, sortColumn=${sortColumn}, sort=${sort})}"
+        <a th:href="@{/?page={nextPage}&size={size}&genre={genre}&searchName={searchName}&sortColumn={sortColumn}&sortOrder={sortOrder}(nextPage=${nextPage}, size=${size}, genre=${genre}, searchName=${searchName}, sortColumn=${sortColumn}, sortOrder=${sortOrder})}"
            class="btn btn-primary btn-sm" th:if="${page < maxPages}">Наступна сторінка</a>
     </div>
 </div>

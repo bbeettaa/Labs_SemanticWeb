@@ -1,4 +1,4 @@
-package org.com.l1;
+package org.com.labs;
 
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
@@ -7,7 +7,7 @@ import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.sparql.vocabulary.FOAF;
 import org.apache.jena.vocabulary.RDF;
-import org.com.utils.GraphConverter;
+import org.com.labs.utils.GraphConverter;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

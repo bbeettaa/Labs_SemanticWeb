@@ -1,7 +1,8 @@
 package org.com.project.web.controllers;
 
-import org.com.project.Dataset;
-import org.com.project.seriveces.WikipediaService;
+import org.com.project.entities.Dataset;
+import org.com.project.seriveces.BasicWikidataFilmService;
+import org.com.project.seriveces.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,15 +13,34 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 import java.util.TreeMap;
 
+/**
+ * Контролер для обробки запитів, пов'язаних із фільмами.
+ * <p>
+ * Цей клас забезпечує маршрутизацію та підготовку даних для представлення,
+ * використовуючи функції сервісу {@link BasicWikidataFilmService}.
+ * </p>
+ */
 @Controller
 public class MovieController {
-    private final WikipediaService wikipediaService;
 
-    @Autowired
-    public MovieController(WikipediaService wikipediaService) {
-        this.wikipediaService = wikipediaService;
-    }
+    /**
+     * Сервіс для роботи з фільмами, який забезпечує бізнес-логіку.
+     */
+    @Autowired // Автоматично підключає залежність FilmService.
+    private FilmService filmService;
 
+    /**
+     * Обробляє запит для отримання списку фільмів із фільтрацією, сортуванням і пагінацією.
+     *
+     * @param genre      жанр фільмів для фільтрації (за замовчуванням "all").
+     * @param page       номер сторінки для пагінації (за замовчуванням 1).
+     * @param size       кількість записів на сторінку (за замовчуванням 10).
+     * @param sortColumn колонка для сортування (за замовчуванням "name").
+     * @param sortOrder  порядок сортування: "asc" для зростання, "desc" для спадання.
+     * @param searchName назва фільму для пошуку (за замовчуванням порожній рядок).
+     * @param model      об'єкт для передачі даних у представлення.
+     * @return назва представлення "index", яке рендериться для клієнта.
+     */
     @GetMapping("/")
     public String getApiMovies(
             @RequestParam(name = "genre", defaultValue = "all") String genre,
@@ -30,13 +50,20 @@ public class MovieController {
             @RequestParam(name = "sortOrder", defaultValue = "asc") String sortOrder,
             @RequestParam(name = "searchName", defaultValue = "") String searchName,
             Model model) {
+        // Обчислення зміщення для пагінації.
         int offset = (page - 1) * size;
 
-        List<Dataset> movies = wikipediaService.getFilms(genre, size, offset, sortColumn, sortOrder, searchName);
-        TreeMap<String, String> genres = wikipediaService.getAvailableGenres();
+        // Отримання списку фільмів з фільтрами, сортуванням і пагінацією.
+        List<Dataset> movies = filmService.getFilms(genre, size, offset, sortColumn, sortOrder, searchName);
 
-        int totalMovies = wikipediaService.countFilms(genre, searchName);
+        // Отримання доступних жанрів фільмів.
+        TreeMap<String, String> genres = filmService.getAvailableGenres();
+
+        // Обчислення загальної кількості сторінок на основі кількості фільмів.
+        int totalMovies = filmService.countFilms(genre, searchName);
         int maxPages = (int) Math.ceil((double) totalMovies / size);
+
+        // Додавання даних до моделі для передачі у представлення.
         model.addAttribute("maxPages", maxPages);
         model.addAttribute("movies", movies);
         model.addAttribute("genres", genres);
@@ -48,15 +75,27 @@ public class MovieController {
         model.addAttribute("sortOrder", sortOrder);
         model.addAttribute("page", page);
         model.addAttribute("searchName", searchName);
-        return "moviesFragment";
+
+        // Повертає представлення для рендерингу списку фільмів.
+        return "index";
     }
 
-    @GetMapping("/{filmId}/details")
+    /**
+     * Обробляє запит для отримання деталей конкретного фільму.
+     *
+     * @param filmId ідентифікатор фільму, який передається в URL.
+     * @param model  об'єкт для передачі даних у представлення.
+     * @return назва представлення "details", яке рендериться для клієнта.
+     */
+    @GetMapping("/{filmId}/details") // Обробляє GET-запити на шлях із деталями фільму.
     public String getFilmDetails(@PathVariable("filmId") String filmId, Model model) {
-        Dataset dataset = wikipediaService.getFilmDetails(filmId);
+        // Отримання даних про фільм за ідентифікатором.
+        Dataset dataset = filmService.getFilmDetails(filmId);
+
+        // Додавання даних фільму до моделі.
         model.addAttribute("dataset", dataset);
-        return "details :: detailsFragment";
+
+        // Повертає представлення для рендерингу деталей фільму.
+        return "details";
     }
-
-
 }

@@ -1,4 +1,4 @@
-package org.com.utils;
+package org.com.labs.utils;
 
 public class RDFTriple {
     private String subject;

@@ -1,4 +1,4 @@
-package org.com.project;
+package org.com.project.entities;
 
 import lombok.Getter;
 import lombok.Setter;

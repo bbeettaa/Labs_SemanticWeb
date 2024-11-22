@@ -1,4 +1,4 @@
-package org.com.l1;
+package org.com.labs;
 
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QuerySolution;

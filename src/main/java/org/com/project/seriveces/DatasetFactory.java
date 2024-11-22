@@ -1,9 +1,25 @@
 package org.com.project.seriveces;
 
 import org.apache.jena.query.QuerySolution;
-import org.com.project.Dataset;
+import org.com.project.entities.Dataset;
 
+/**
+ * Фабрика для створення об'єктів {@link Dataset} на основі даних із запитів SPARQL.
+ * <p>
+ * Клас обробляє результати SPARQL-запитів, представлені у вигляді {@link QuerySolution},
+ * та створює об'єкти типу {@link Dataset}, заповнюючи їх відповідними значеннями.
+ * </p>
+ */
 public class DatasetFactory {
+
+    /**
+     * Створює об'єкт {@link Dataset} з об'єкта {@link QuerySolution}.
+     *
+     * @param solution об'єкт, що представляє один результат SPARQL-запиту.
+     *                 Містить дані, отримані з тріплетів RDF.
+     * @return об'єкт {@link Dataset}, заповнений даними з {@link QuerySolution}.
+     * Якщо певне поле не присутнє у запиті або має значення {@code null}, воно пропускається.
+     */
     public static Dataset fromSolution(QuerySolution solution) {
         Dataset dataset = new Dataset();
 
@@ -37,7 +53,6 @@ public class DatasetFactory {
             dataset.setPosterUrl(solution.getResource("posterUrl").getURI());
         if (solution.contains("publicationYear") && solution.getLiteral("publicationYear") != null)
             dataset.setSamplePublicationDate(solution.getLiteral("publicationYear").getString());
-
         if (solution.contains("award") && solution.getLiteral("award") != null)
             dataset.setAward(solution.getLiteral("award").getString());
         if (solution.contains("mainSubjects") && solution.getLiteral("mainSubjects") != null)
